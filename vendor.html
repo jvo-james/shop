@@ -1,0 +1,240 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Vendor Portal | Maison Élitaire</title>
+  <meta name="description" content="Sign in or create a vendor account to manage products." />
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@400;500;600;700&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css">
+  <link rel="stylesheet" href="styles.css" />
+</head>
+<body data-page="vendor">
+  <div class="site-shell light-page vendor-page-shell">
+    <header class="simple-header">
+      <div class="container simple-header-inner">
+        <a href="index.html" class="brand">MAISON ÉLITAIRE</a>
+        <a href="products.html" class="simple-header-link">Back to shop</a>
+      </div>
+    </header>
+
+    <main>
+      <section class="section vendor-auth-section" id="vendorAuthSection">
+        <div class="container vendor-auth-shell">
+          <div class="vendor-auth-intro">
+            <p class="eyebrow">Vendor portal</p>
+            <h1>Access your private dashboard</h1>
+            <p>
+              Sign in to manage your products, or create an account with your vendor name to start publishing items.
+            </p>
+            <p class="vendor-auth-status" id="vendorAuthSummary">
+              Create an account or sign in to open the private vendor dashboard.
+            </p>
+          </div>
+
+          <div class="vendor-auth-grid">
+            <section class="vendor-auth-card">
+              <p class="eyebrow">Sign in</p>
+              <h2>Welcome back</h2>
+              <form id="vendorSignInForm" class="vendor-auth-form">
+                <label class="field field-full">
+                  <span>Email</span>
+                  <input type="email" id="vendorSignInEmail" placeholder="you@example.com" required />
+                </label>
+                <label class="field field-full">
+                  <span>Password</span>
+                  <input type="password" id="vendorSignInPassword" placeholder="Your password" required />
+                </label>
+                <button type="submit" class="btn btn-dark full-width">Sign in</button>
+              </form>
+            </section>
+
+            <section class="vendor-auth-card">
+              <p class="eyebrow">Create account</p>
+              <h2>Start selling</h2>
+              <form id="vendorSignUpForm" class="vendor-auth-form">
+                <label class="field field-full">
+                  <span>Vendor name</span>
+                  <input type="text" id="vendorCreateName" placeholder="Your store or brand name" required />
+                </label>
+                <label class="field field-full">
+                  <span>Email</span>
+                  <input type="email" id="vendorCreateEmail" placeholder="you@example.com" required />
+                </label>
+                <label class="field field-full">
+                  <span>Password</span>
+                  <input type="password" id="vendorCreatePassword" placeholder="Create a password" required />
+                </label>
+                <label class="field field-full">
+                  <span>Confirm password</span>
+                  <input type="password" id="vendorCreateConfirmPassword" placeholder="Confirm your password" required />
+                </label>
+                <button type="submit" class="btn btn-dark full-width">Create account</button>
+              </form>
+            </section>
+          </div>
+
+          <p class="vendor-auth-message" id="vendorAuthStatus" aria-live="polite"></p>
+        </div>
+      </section>
+
+      <section class="section vendor-dashboard-section" id="vendorDashboardSection" hidden>
+        <div class="container">
+          <div class="vendor-dashboard-topbar">
+            <div>
+              <p class="eyebrow">Private dashboard</p>
+              <h1 id="vendorDashboardTitle">Welcome back</h1>
+              <p id="vendorDashboardIntro">Add products, edit details, and keep your catalog live from one private dashboard.</p>
+            </div>
+            <div class="vendor-dashboard-meta">
+              <p class="vendor-dashboard-vendor" id="vendorDashboardVendorName"></p>
+              <button type="button" class="btn btn-outline-dark" id="vendorSignOutBtn">Sign out</button>
+            </div>
+          </div>
+
+          <div class="vendor-dashboard-grid">
+            <div class="vendor-column">
+              <div class="vendor-stats" id="vendorStats"></div>
+
+              <div class="vendor-panel">
+                <div class="vendor-panel-head">
+                  <div>
+                    <p class="eyebrow">Your products</p>
+                    <h2>Manage published items</h2>
+                  </div>
+                </div>
+
+                <div class="vendor-toolbar">
+                  <input type="search" id="vendorProductSearch" placeholder="Search by name, edit, or category" aria-label="Search vendor products" />
+                  <select id="vendorCategoryFilter" aria-label="Filter vendor products by category">
+                    <option value="">All categories</option>
+                    <option value="Women">Women</option>
+                    <option value="Men">Men</option>
+                    <option value="Children">Children</option>
+                  </select>
+                </div>
+
+                <div class="vendor-products-list" id="vendorProductsList"></div>
+              </div>
+            </div>
+
+            <div class="vendor-panel vendor-form-panel">
+              <div class="vendor-panel-head">
+                <div>
+                  <p class="eyebrow">Product form</p>
+                  <h2 id="vendorFormTitle">Create a product</h2>
+                </div>
+                <p class="vendor-form-intro" id="vendorFormIntro">
+                  Upload real images, describe the product, and publish to your public catalog.
+                </p>
+                <p class="vendor-form-status" id="vendorFormStatus">Ready to create a new product.</p>
+              </div>
+
+              <form class="vendor-form" id="vendorProductForm">
+                <input type="hidden" id="vendorProductId" />
+
+                <div class="field-grid">
+                  <label class="field field-full">
+                    <span>Product name</span>
+                    <input type="text" id="vendorProductName" placeholder="Structured Jacket" required />
+                  </label>
+
+                  <label class="field">
+                    <span>Category</span>
+                    <select id="vendorProductCategory" required>
+                      <option value="Women">Women</option>
+                      <option value="Men">Men</option>
+                      <option value="Children">Children</option>
+                    </select>
+                  </label>
+
+                  <label class="field">
+                    <span>Subcategory</span>
+                    <input type="text" id="vendorProductSubcategory" placeholder="Jackets" required />
+                  </label>
+
+                  <label class="field field-full">
+                    <span>Price (GHS)</span>
+                    <input type="number" id="vendorProductPrice" min="1" step="1" placeholder="240" required />
+                  </label>
+
+                  <label class="field field-full">
+                    <span>Main image upload</span>
+                    <input type="file" id="vendorProductImageFile" accept="image/*" />
+                  </label>
+
+                  <div class="vendor-upload-preview-wrap field-full">
+                    <span>Image preview</span>
+                    <div class="vendor-upload-preview" id="vendorProductImagePreview">
+                      <div class="vendor-upload-placeholder">Image preview will appear here.</div>
+                    </div>
+                  </div>
+
+                  <label class="field field-full">
+                    <span>Gallery uploads</span>
+                    <input type="file" id="vendorProductGalleryFiles" accept="image/*" multiple />
+                  </label>
+
+                  <div class="vendor-upload-preview-wrap field-full">
+                    <span>Gallery preview</span>
+                    <div class="vendor-upload-gallery" id="vendorProductGalleryPreview">
+                      <div class="vendor-upload-placeholder">Gallery preview will appear here.</div>
+                    </div>
+                  </div>
+
+                  <label class="field field-full">
+                    <span>Description</span>
+                    <textarea id="vendorProductDescription" rows="4" placeholder="Write a short product description" required></textarea>
+                  </label>
+
+                  <label class="field field-full">
+                    <span>Sizes</span>
+                    <input type="text" id="vendorProductSizes" placeholder="XS, S, M, L" />
+                  </label>
+
+                  <label class="field field-full">
+                    <span>Colors</span>
+                    <input type="text" id="vendorProductColors" placeholder="Black, Ivory, Stone" />
+                  </label>
+
+                  <label class="field field-full">
+                    <span>Edits / tags</span>
+                    <input type="text" id="vendorProductEdits" placeholder="New Arrivals, Best Sellers, Tailoring" />
+                  </label>
+                </div>
+
+                <div class="vendor-flag-row">
+                  <label class="check-field">
+                    <input type="checkbox" id="vendorProductFeatured" />
+                    <span>Featured on homepage</span>
+                  </label>
+
+                  <label class="check-field">
+                    <input type="checkbox" id="vendorProductNew" />
+                    <span>Mark as new</span>
+                  </label>
+                </div>
+
+                <div class="vendor-form-actions">
+                  <button type="submit" class="btn btn-dark">Save product</button>
+                  <button type="button" class="btn btn-outline-dark" id="vendorResetBtn">Reset form</button>
+                </div>
+              </form>
+            </div>
+          </div>
+        </div>
+      </section>
+    </main>
+
+  </div>
+
+  <script src="women.js"></script>
+  <script src="men.js"></script>
+  <script src="children.js"></script>
+  <script src="edits.js"></script>
+  <script src="script.js"></script>
+</body>
+</html>

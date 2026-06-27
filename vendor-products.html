@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Vendor Products | Maison Élitaire</title>
+  <meta name="description" content="Browse all products from a vendor." />
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@400;500;600;700&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css">
+  <link rel="stylesheet" href="styles.css" />
+</head>
+<body data-page="vendor-products">
+  <div class="site-shell light-page">
+    <header class="topbar">
+      Explore products by vendor
+    </header>
+
+    <nav class="navbar navbar-light">
+      <div class="container nav-inner">
+        <div class="nav-links nav-left">
+          <a href="index.html">Home</a>
+          <a href="products.html">Collections</a>
+        </div>
+
+        <a href="index.html" class="brand">MAISON ÉLITAIRE</a>
+
+        <div class="nav-links nav-right">
+          <a href="vendor.html">Vendor portal</a>
+        </div>
+      </div>
+    </nav>
+
+    <main>
+      <section class="section vendor-products-hero">
+        <div class="container vendor-products-hero-grid">
+          <div>
+            <p class="eyebrow">Vendor products</p>
+            <h1 id="vendorProductsTitle">Vendor</h1>
+            <p id="vendorProductsSubtitle">Browse the products published by this vendor.</p>
+          </div>
+          <div class="vendor-products-hero-meta">
+            <strong id="vendorProductsCount">0 products</strong>
+            <a href="products.html" class="btn btn-outline-dark">All collections</a>
+          </div>
+        </div>
+      </section>
+
+      <section class="section">
+        <div class="container">
+          <div class="product-grid vendor-public-grid" id="vendorPublicProductsGrid"></div>
+          <div class="empty-state" id="vendorPublicEmptyState" hidden>
+            <p class="eyebrow">No products yet</p>
+            <h2>This vendor has not published any products.</h2>
+            <p>Check back later or explore the main collections.</p>
+          </div>
+        </div>
+      </section>
+    </main>
+
+    <footer class="footer footer-light">
+      <div class="container footer-grid">
+        <div>
+          <a href="index.html" class="brand footer-brand">MAISON ÉLITAIRE</a>
+          <p class="footer-copy">Elegant fashion crafted with restraint and presence.</p>
+        </div>
+        <div>
+          <h4>Women</h4>
+          <a href="products.html?category=Women">Women</a>
+          <a href="products.html?category=Men">Men</a>
+          <a href="products.html?category=Children">Children</a>
+        </div>
+        <div>
+          <h4>Vendor</h4>
+          <a href="vendor.html">Vendor portal</a>
+          <a href="products.html">Collections</a>
+        </div>
+      </div>
+    </footer>
+  </div>
+
+  <script src="women.js"></script>
+  <script src="men.js"></script>
+  <script src="children.js"></script>
+  <script src="edits.js"></script>
+  <script src="script.js"></script>
+</body>
+</html>

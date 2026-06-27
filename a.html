@@ -1,0 +1,1839 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>AURELLE — Luxury Fashion</title>
+  <meta name="description" content="A premium fashion e-commerce experience for men, women, and kids." />
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@400;500;600;700&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --bg: #f7f5f0;
+      --surface: #ffffff;
+      --surface-2: #f0ede6;
+      --text: #121212;
+      --muted: #676767;
+      --line: rgba(18, 18, 18, 0.1);
+      --strong-line: rgba(18, 18, 18, 0.18);
+      --accent: #171717;
+      --shadow: 0 20px 60px rgba(0,0,0,0.08);
+      --radius: 22px;
+      --max-width: 1400px;
+      --ease: cubic-bezier(.2,.8,.2,1);
+    }
+
+    * { box-sizing: border-box; }
+    html { scroll-behavior: smooth; }
+    body {
+      margin: 0;
+      font-family: 'Inter', system-ui, sans-serif;
+      color: var(--text);
+      background: var(--bg);
+      -webkit-font-smoothing: antialiased;
+      text-rendering: optimizeLegibility;
+    }
+
+    img {
+      display: block;
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+    }
+
+    a { color: inherit; text-decoration: none; }
+    button { font: inherit; }
+
+    .container {
+      width: min(calc(100% - 40px), var(--max-width));
+      margin: 0 auto;
+    }
+
+    .eyebrow {
+      display: inline-flex;
+      align-items: center;
+      gap: 10px;
+      letter-spacing: 0.16em;
+      text-transform: uppercase;
+      font-size: 0.73rem;
+      color: var(--muted);
+    }
+
+    .eyebrow::before {
+      content: "";
+      width: 34px;
+      height: 1px;
+      background: currentColor;
+      opacity: 0.55;
+    }
+
+    .display {
+      font-family: 'Cormorant Garamond', serif;
+      font-weight: 600;
+      letter-spacing: -0.03em;
+      line-height: 0.94;
+    }
+
+    .section-title {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: clamp(2.2rem, 4vw, 4.25rem);
+      font-weight: 600;
+      line-height: 0.95;
+      letter-spacing: -0.03em;
+      margin: 0;
+    }
+
+    .section-copy {
+      color: var(--muted);
+      max-width: 680px;
+      line-height: 1.8;
+      margin: 18px 0 0;
+      font-size: 0.98rem;
+    }
+
+    .btn,
+    .btn-outline,
+    .icon-btn {
+      transition: transform .35s var(--ease), background-color .35s var(--ease), border-color .35s var(--ease), color .35s var(--ease), opacity .35s var(--ease);
+    }
+
+    .btn {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      gap: 10px;
+      min-height: 52px;
+      padding: 0 22px;
+      border-radius: 999px;
+      border: 1px solid var(--accent);
+      background: var(--accent);
+      color: #fff;
+      cursor: pointer;
+      letter-spacing: 0.04em;
+      text-transform: uppercase;
+      font-size: 0.76rem;
+      font-weight: 600;
+    }
+
+    .btn:hover,
+    .btn:focus-visible {
+      transform: translateY(-2px);
+    }
+
+    .btn-outline {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      min-height: 52px;
+      padding: 0 22px;
+      border-radius: 999px;
+      border: 1px solid rgba(255,255,255,0.45);
+      background: rgba(255,255,255,0.08);
+      color: #fff;
+      backdrop-filter: blur(16px);
+      cursor: pointer;
+      letter-spacing: 0.04em;
+      text-transform: uppercase;
+      font-size: 0.76rem;
+      font-weight: 600;
+    }
+
+    .btn-outline:hover,
+    .btn-outline:focus-visible {
+      background: rgba(255,255,255,0.16);
+      transform: translateY(-2px);
+    }
+
+    .icon-btn {
+      width: 44px;
+      height: 44px;
+      border-radius: 999px;
+      border: 1px solid var(--line);
+      background: rgba(255,255,255,0.7);
+      display: inline-grid;
+      place-items: center;
+      cursor: pointer;
+    }
+
+    .icon-btn:hover { transform: translateY(-2px); }
+
+    .announcement {
+      min-height: 40px;
+      display: grid;
+      place-items: center;
+      background: #121212;
+      color: rgba(255,255,255,0.85);
+      font-size: 0.74rem;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      text-align: center;
+      padding: 10px 20px;
+    }
+
+    .site-header {
+      position: sticky;
+      top: 0;
+      z-index: 50;
+      background: rgba(247, 245, 240, 0.82);
+      backdrop-filter: blur(20px);
+      border-bottom: 1px solid rgba(18,18,18,0.06);
+    }
+
+    .nav-shell {
+      display: grid;
+      grid-template-columns: 1fr auto 1fr;
+      align-items: center;
+      gap: 20px;
+      min-height: 82px;
+    }
+
+    .brand {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 1.9rem;
+      font-weight: 700;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      justify-self: center;
+      white-space: nowrap;
+    }
+
+    .nav-left,
+    .nav-right {
+      display: flex;
+      align-items: center;
+      gap: 20px;
+      min-width: 0;
+    }
+
+    .nav-right {
+      justify-content: flex-end;
+    }
+
+    .nav-links {
+      display: flex;
+      align-items: center;
+      gap: 24px;
+      font-size: 0.9rem;
+      color: #1c1c1c;
+    }
+
+    .nav-links a,
+    .nav-actions a {
+      position: relative;
+      padding-bottom: 2px;
+    }
+
+    .nav-links a::after,
+    .nav-actions a::after {
+      content: "";
+      position: absolute;
+      left: 0;
+      bottom: -2px;
+      width: 100%;
+      height: 1px;
+      background: currentColor;
+      transform: scaleX(0);
+      transform-origin: left;
+      transition: transform .35s var(--ease);
+    }
+
+    .nav-links a:hover::after,
+    .nav-links a:focus-visible::after,
+    .nav-actions a:hover::after,
+    .nav-actions a:focus-visible::after {
+      transform: scaleX(1);
+    }
+
+    .nav-actions {
+      display: flex;
+      gap: 18px;
+      align-items: center;
+      font-size: 0.87rem;
+      color: var(--muted);
+    }
+
+    .search-chip {
+      border: 1px solid var(--line);
+      border-radius: 999px;
+      padding: 10px 14px;
+      display: inline-flex;
+      align-items: center;
+      gap: 10px;
+      color: var(--muted);
+      background: rgba(255,255,255,0.65);
+      min-width: 210px;
+    }
+
+    .mobile-toggle,
+    .mobile-menu { display: none; }
+
+    .hero {
+      padding: 18px 0 24px;
+    }
+
+    .hero-grid {
+      display: grid;
+      grid-template-columns: 1.08fr 0.92fr;
+      gap: 18px;
+      min-height: 82vh;
+    }
+
+    .hero-card,
+    .hero-secondary {
+      position: relative;
+      border-radius: 28px;
+      overflow: hidden;
+      background: #ddd;
+      box-shadow: var(--shadow);
+      isolation: isolate;
+    }
+
+    .hero-card::after,
+    .hero-secondary::after {
+      content: "";
+      position: absolute;
+      inset: 0;
+      background: linear-gradient(to top, rgba(0,0,0,0.52), rgba(0,0,0,0.16) 45%, rgba(0,0,0,0.04));
+      z-index: 1;
+    }
+
+    .hero-media {
+      position: absolute;
+      inset: 0;
+      transform: scale(1.02);
+      transition: transform 1.2s var(--ease);
+    }
+
+    .hero-card:hover .hero-media,
+    .hero-secondary:hover .hero-media {
+      transform: scale(1.07);
+    }
+
+    .hero-content {
+      position: absolute;
+      inset: auto 0 0 0;
+      z-index: 2;
+      color: #fff;
+      padding: clamp(28px, 4vw, 50px);
+      display: flex;
+      flex-direction: column;
+      gap: 16px;
+      align-items: flex-start;
+    }
+
+    .hero-title {
+      font-size: clamp(3.4rem, 8vw, 7rem);
+      margin: 0;
+      max-width: 10ch;
+    }
+
+    .hero-subtitle {
+      max-width: 560px;
+      line-height: 1.75;
+      color: rgba(255,255,255,0.86);
+      font-size: 0.98rem;
+    }
+
+    .hero-actions {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 12px;
+      margin-top: 8px;
+    }
+
+    .hero-side {
+      display: grid;
+      grid-template-rows: 1fr 1fr;
+      gap: 18px;
+    }
+
+    .hero-secondary .hero-content {
+      padding: 28px;
+    }
+
+    .hero-secondary .display {
+      font-size: clamp(2rem, 4vw, 3.4rem);
+      margin: 8px 0 0;
+    }
+
+    section {
+      padding: 80px 0;
+    }
+
+    .section-head {
+      display: flex;
+      justify-content: space-between;
+      align-items: end;
+      gap: 30px;
+      margin-bottom: 34px;
+    }
+
+    .link-arrow {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      text-transform: uppercase;
+      letter-spacing: 0.1em;
+      font-size: 0.76rem;
+      color: var(--muted);
+    }
+
+    .link-arrow span:last-child {
+      transition: transform .35s var(--ease);
+    }
+
+    .link-arrow:hover span:last-child {
+      transform: translateX(3px);
+    }
+
+    .category-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 18px;
+    }
+
+    .category-card {
+      position: relative;
+      min-height: 620px;
+      border-radius: var(--radius);
+      overflow: hidden;
+      background: #ddd;
+      box-shadow: var(--shadow);
+      transform: translateY(0);
+      transition: transform .6s var(--ease), box-shadow .6s var(--ease);
+    }
+
+    .category-card::after {
+      content: "";
+      position: absolute;
+      inset: 0;
+      background: linear-gradient(to top, rgba(0,0,0,.5), rgba(0,0,0,0.05));
+    }
+
+    .category-card:hover {
+      transform: translateY(-6px);
+      box-shadow: 0 28px 80px rgba(0,0,0,.12);
+    }
+
+    .category-card img {
+      transition: transform 1.1s var(--ease);
+    }
+
+    .category-card:hover img {
+      transform: scale(1.05);
+    }
+
+    .category-content {
+      position: absolute;
+      inset: auto 0 0 0;
+      z-index: 2;
+      padding: 30px;
+      color: #fff;
+      display: flex;
+      flex-direction: column;
+      gap: 10px;
+      align-items: flex-start;
+    }
+
+    .category-title {
+      margin: 0;
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 2.6rem;
+      line-height: 0.95;
+    }
+
+    .product-shell {
+      display: grid;
+      grid-template-columns: 280px 1fr;
+      gap: 24px;
+      align-items: start;
+    }
+
+    .filters {
+      position: sticky;
+      top: 106px;
+      border: 1px solid var(--line);
+      border-radius: 24px;
+      background: rgba(255,255,255,.72);
+      backdrop-filter: blur(18px);
+      padding: 24px;
+    }
+
+    .filter-group + .filter-group {
+      margin-top: 28px;
+      padding-top: 22px;
+      border-top: 1px solid var(--line);
+    }
+
+    .filter-title {
+      font-size: 0.8rem;
+      text-transform: uppercase;
+      letter-spacing: 0.12em;
+      color: var(--muted);
+      margin-bottom: 14px;
+    }
+
+    .chip-list,
+    .size-list {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 10px;
+    }
+
+    .chip,
+    .size-pill {
+      border: 1px solid var(--line);
+      background: transparent;
+      color: var(--text);
+      border-radius: 999px;
+      padding: 10px 14px;
+      cursor: pointer;
+      font-size: 0.87rem;
+      transition: all .3s var(--ease);
+    }
+
+    .chip.active,
+    .size-pill.active,
+    .chip:hover,
+    .size-pill:hover {
+      background: var(--accent);
+      color: #fff;
+      border-color: var(--accent);
+    }
+
+    .product-grid {
+      display: grid;
+      grid-template-columns: repeat(3, minmax(0, 1fr));
+      gap: 18px;
+    }
+
+    .product-card {
+      background: rgba(255,255,255,0.74);
+      border: 1px solid rgba(18,18,18,0.06);
+      border-radius: 22px;
+      overflow: hidden;
+      transition: transform .5s var(--ease), box-shadow .5s var(--ease), border-color .5s var(--ease);
+      cursor: pointer;
+    }
+
+    .product-card:hover {
+      transform: translateY(-5px);
+      box-shadow: var(--shadow);
+      border-color: rgba(18,18,18,0.12);
+    }
+
+    .product-media {
+      aspect-ratio: 4 / 5;
+      background: #ece8df;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .product-media img {
+      transition: transform .8s var(--ease);
+    }
+
+    .product-card:hover .product-media img {
+      transform: scale(1.04);
+    }
+
+    .product-tag {
+      position: absolute;
+      top: 16px;
+      left: 16px;
+      z-index: 2;
+      background: rgba(255,255,255,.82);
+      backdrop-filter: blur(12px);
+      border-radius: 999px;
+      padding: 8px 12px;
+      font-size: 0.68rem;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+    }
+
+    .product-info {
+      padding: 18px 18px 20px;
+      display: grid;
+      gap: 8px;
+    }
+
+    .product-topline {
+      display: flex;
+      align-items: start;
+      justify-content: space-between;
+      gap: 12px;
+    }
+
+    .product-name {
+      font-size: 1rem;
+      font-weight: 600;
+      margin: 0;
+    }
+
+    .product-price {
+      font-size: 0.95rem;
+      font-weight: 600;
+      white-space: nowrap;
+    }
+
+    .product-meta {
+      color: var(--muted);
+      font-size: 0.88rem;
+      line-height: 1.6;
+    }
+
+    .campaign {
+      display: grid;
+      grid-template-columns: 1.1fr .9fr;
+      gap: 18px;
+      align-items: stretch;
+    }
+
+    .campaign-card,
+    .campaign-panel {
+      border-radius: 28px;
+      overflow: hidden;
+      position: relative;
+      min-height: 580px;
+      background: #ddd;
+      box-shadow: var(--shadow);
+    }
+
+    .campaign-card::after {
+      content: "";
+      position: absolute;
+      inset: 0;
+      background: linear-gradient(135deg, rgba(0,0,0,.08), rgba(0,0,0,.5));
+    }
+
+    .campaign-copy {
+      position: absolute;
+      left: 0;
+      right: 0;
+      bottom: 0;
+      z-index: 2;
+      padding: 40px;
+      color: white;
+    }
+
+    .campaign-copy .display {
+      font-size: clamp(2.6rem, 5vw, 5rem);
+      margin: 10px 0 14px;
+      max-width: 8ch;
+    }
+
+    .campaign-panel {
+      background: linear-gradient(180deg, #efebe3 0%, #e8e1d3 100%);
+      padding: 40px;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+    }
+
+    .campaign-stats {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 14px;
+      margin-top: 30px;
+    }
+
+    .stat {
+      border-top: 1px solid var(--strong-line);
+      padding-top: 18px;
+    }
+
+    .stat strong {
+      display: block;
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 2.2rem;
+      font-weight: 600;
+      line-height: 1;
+      margin-bottom: 8px;
+    }
+
+    .editorial {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 18px;
+    }
+
+    .editorial-card {
+      border-radius: 26px;
+      overflow: hidden;
+      background: rgba(255,255,255,.75);
+      border: 1px solid rgba(18,18,18,0.06);
+      display: grid;
+      grid-template-columns: .96fr 1.04fr;
+      min-height: 420px;
+      box-shadow: var(--shadow);
+    }
+
+    .editorial-copy {
+      padding: 36px;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      gap: 14px;
+    }
+
+    .editorial-copy h3 {
+      margin: 0;
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 2.35rem;
+      line-height: 0.96;
+    }
+
+    .editorial-copy p {
+      margin: 0;
+      color: var(--muted);
+      line-height: 1.8;
+    }
+
+    .pdp {
+      display: grid;
+      grid-template-columns: 1.1fr .9fr;
+      gap: 34px;
+      align-items: start;
+    }
+
+    .pdp-gallery {
+      display: grid;
+      grid-template-columns: 120px 1fr;
+      gap: 16px;
+      position: sticky;
+      top: 106px;
+    }
+
+    .thumbs {
+      display: grid;
+      gap: 12px;
+      align-content: start;
+    }
+
+    .thumb {
+      aspect-ratio: 4 / 5;
+      border-radius: 18px;
+      overflow: hidden;
+      border: 1px solid transparent;
+      cursor: pointer;
+      opacity: 0.8;
+      transition: border-color .3s var(--ease), opacity .3s var(--ease), transform .3s var(--ease);
+    }
+
+    .thumb.active,
+    .thumb:hover {
+      border-color: var(--accent);
+      opacity: 1;
+      transform: translateY(-2px);
+    }
+
+    .pdp-main {
+      aspect-ratio: 4 / 5.05;
+      border-radius: 28px;
+      overflow: hidden;
+      background: #e9e4db;
+      box-shadow: var(--shadow);
+    }
+
+    .pdp-info {
+      padding-top: 8px;
+    }
+
+    .pdp-category {
+      font-size: 0.76rem;
+      letter-spacing: 0.13em;
+      text-transform: uppercase;
+      color: var(--muted);
+    }
+
+    .pdp-title {
+      margin: 10px 0 10px;
+      font-family: 'Cormorant Garamond', serif;
+      font-size: clamp(2.7rem, 5vw, 4.5rem);
+      line-height: 0.94;
+      letter-spacing: -0.03em;
+    }
+
+    .pdp-price {
+      font-size: 1.1rem;
+      font-weight: 600;
+      margin-bottom: 20px;
+    }
+
+    .pdp-description {
+      color: var(--muted);
+      line-height: 1.9;
+      max-width: 50ch;
+      margin-bottom: 26px;
+    }
+
+    .variant-group + .variant-group {
+      margin-top: 22px;
+    }
+
+    .variant-label {
+      margin-bottom: 12px;
+      font-size: 0.79rem;
+      text-transform: uppercase;
+      letter-spacing: 0.11em;
+      color: var(--muted);
+    }
+
+    .swatches {
+      display: flex;
+      gap: 10px;
+      flex-wrap: wrap;
+    }
+
+    .swatch {
+      width: 34px;
+      height: 34px;
+      border-radius: 999px;
+      border: 1px solid rgba(0,0,0,.12);
+      cursor: pointer;
+      position: relative;
+      transition: transform .25s var(--ease), border-color .25s var(--ease);
+    }
+
+    .swatch.active,
+    .swatch:hover {
+      transform: scale(1.06);
+      border-color: #000;
+    }
+
+    .swatch.active::after {
+      content: "";
+      position: absolute;
+      inset: -5px;
+      border: 1px solid #000;
+      border-radius: inherit;
+    }
+
+    .purchase-row {
+      display: flex;
+      gap: 12px;
+      flex-wrap: wrap;
+      margin-top: 28px;
+    }
+
+    .note-row {
+      margin-top: 24px;
+      display: grid;
+      gap: 14px;
+      color: var(--muted);
+      font-size: 0.92rem;
+    }
+
+    .detail-accordions {
+      margin-top: 34px;
+      border-top: 1px solid var(--line);
+    }
+
+    .accordion {
+      border-bottom: 1px solid var(--line);
+    }
+
+    .accordion button {
+      width: 100%;
+      border: 0;
+      background: none;
+      padding: 20px 0;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      cursor: pointer;
+      font-size: 0.95rem;
+      font-weight: 600;
+    }
+
+    .accordion-content {
+      display: none;
+      padding: 0 0 18px;
+      color: var(--muted);
+      line-height: 1.8;
+    }
+
+    .accordion.open .accordion-content {
+      display: block;
+    }
+
+    .site-footer {
+      margin-top: 40px;
+      background: #111;
+      color: rgba(255,255,255,0.88);
+      padding: 70px 0 30px;
+    }
+
+    .footer-grid {
+      display: grid;
+      grid-template-columns: 1.2fr repeat(3, 1fr);
+      gap: 28px;
+      padding-bottom: 36px;
+      border-bottom: 1px solid rgba(255,255,255,0.12);
+    }
+
+    .footer-brand {
+      max-width: 360px;
+    }
+
+    .footer-brand .brand-mark {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 2rem;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      margin-bottom: 12px;
+    }
+
+    .footer-title {
+      text-transform: uppercase;
+      letter-spacing: 0.12em;
+      font-size: 0.75rem;
+      color: rgba(255,255,255,0.6);
+      margin-bottom: 14px;
+    }
+
+    .footer-links {
+      display: grid;
+      gap: 12px;
+      color: rgba(255,255,255,0.82);
+      font-size: 0.93rem;
+    }
+
+    .footer-bottom {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      gap: 20px;
+      padding-top: 24px;
+      color: rgba(255,255,255,0.56);
+      font-size: 0.82rem;
+    }
+
+    .fade-up {
+      opacity: 0;
+      transform: translateY(20px);
+      transition: opacity .9s var(--ease), transform .9s var(--ease);
+    }
+
+    .fade-up.in-view {
+      opacity: 1;
+      transform: translateY(0);
+    }
+
+    @media (max-width: 1180px) {
+      .nav-shell {
+        grid-template-columns: auto 1fr auto;
+      }
+
+      .nav-left .nav-links,
+      .nav-right .nav-actions,
+      .nav-right .search-chip {
+        display: none;
+      }
+
+      .brand {
+        justify-self: start;
+        margin-left: 8px;
+      }
+
+      .mobile-toggle {
+        display: inline-flex;
+        border: 0;
+        background: none;
+        padding: 0;
+        align-items: center;
+        gap: 12px;
+        cursor: pointer;
+        color: var(--text);
+      }
+
+      .mobile-menu {
+        display: none;
+        padding: 0 0 18px;
+      }
+
+      .mobile-menu.open {
+        display: grid;
+        gap: 12px;
+      }
+
+      .mobile-menu a,
+      .mobile-menu button {
+        min-height: 48px;
+        border-radius: 14px;
+        border: 1px solid var(--line);
+        background: rgba(255,255,255,0.76);
+        padding: 0 16px;
+        text-align: left;
+      }
+
+      .hero-grid,
+      .campaign,
+      .pdp,
+      .editorial,
+      .footer-grid,
+      .editorial-card {
+        grid-template-columns: 1fr;
+      }
+
+      .hero-side {
+        grid-template-columns: 1fr 1fr;
+        grid-template-rows: none;
+      }
+
+      .category-grid,
+      .product-grid {
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+      }
+
+      .product-shell {
+        grid-template-columns: 1fr;
+      }
+
+      .filters {
+        position: static;
+      }
+
+      .pdp-gallery {
+        position: static;
+      }
+    }
+
+    @media (max-width: 760px) {
+      .container {
+        width: min(calc(100% - 24px), var(--max-width));
+      }
+
+      .announcement {
+        font-size: 0.66rem;
+        letter-spacing: 0.08em;
+      }
+
+      .nav-shell {
+        min-height: 72px;
+      }
+
+      .brand {
+        font-size: 1.55rem;
+      }
+
+      .hero-grid {
+        min-height: auto;
+      }
+
+      .hero-card,
+      .hero-secondary,
+      .campaign-card,
+      .campaign-panel,
+      .category-card {
+        border-radius: 22px;
+      }
+
+      .hero-title {
+        font-size: clamp(2.5rem, 15vw, 4.6rem);
+      }
+
+      section {
+        padding: 56px 0;
+      }
+
+      .section-head {
+        align-items: start;
+        flex-direction: column;
+        margin-bottom: 26px;
+      }
+
+      .hero-side,
+      .category-grid,
+      .product-grid,
+      .campaign-stats {
+        grid-template-columns: 1fr;
+      }
+
+      .product-grid {
+        gap: 14px;
+      }
+
+      .category-card {
+        min-height: 500px;
+      }
+
+      .campaign-copy,
+      .campaign-panel,
+      .editorial-copy,
+      .hero-content,
+      .category-content {
+        padding: 24px;
+      }
+
+      .pdp-gallery {
+        grid-template-columns: 1fr;
+      }
+
+      .thumbs {
+        order: 2;
+        grid-template-columns: repeat(4, 1fr);
+      }
+
+      .pdp-main {
+        order: 1;
+      }
+
+      .footer-bottom {
+        flex-direction: column;
+        align-items: start;
+      }
+    }
+  </style>
+</head>
+<body>
+  <div class="announcement">Complimentary shipping on orders above $180 • New season arrivals now live</div>
+
+  <header class="site-header">
+    <div class="container">
+      <div class="nav-shell">
+        <div class="nav-left">
+          <button class="mobile-toggle" id="mobileToggle" aria-label="Open navigation">
+            <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round">
+              <path d="M3 6h18M3 12h18M3 18h18"></path>
+            </svg>
+          </button>
+          <nav class="nav-links" aria-label="Main navigation">
+            <a href="#homepage">Home</a>
+            <a href="#collections">Collections</a>
+            <a href="#listing">Shop</a>
+            <a href="#product">Product</a>
+          </nav>
+        </div>
+
+        <a href="#homepage" class="brand">Aurelle</a>
+
+        <div class="nav-right">
+          <div class="search-chip" aria-hidden="true">
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round"><circle cx="11" cy="11" r="7"></circle><path d="m21 21-4.35-4.35"></path></svg>
+            <span>Search the collection</span>
+          </div>
+          <div class="nav-actions">
+            <a href="#listing">Wishlist</a>
+            <a href="#product">Cart (02)</a>
+          </div>
+        </div>
+      </div>
+
+      <nav class="mobile-menu" id="mobileMenu" aria-label="Mobile navigation">
+        <a href="#homepage">Home</a>
+        <a href="#collections">Collections</a>
+        <a href="#listing">Shop</a>
+        <a href="#product">Product</a>
+      </nav>
+    </div>
+  </header>
+
+  <main>
+    <section class="hero" id="homepage">
+      <div class="container">
+        <div class="hero-grid">
+          <article class="hero-card fade-up">
+            <div class="hero-media">
+              <img src="https://images.unsplash.com/photo-1515886657613-9f3515b0c78f?auto=format&fit=crop&w=1400&q=80" alt="Elegant women’s fashion campaign" />
+            </div>
+            <div class="hero-content">
+              <div class="eyebrow">New Season 2026</div>
+              <h1 class="hero-title display">Fashion with a stronger silhouette.</h1>
+              <p class="hero-subtitle">Refined essentials, elevated tailoring, and statement layers designed for men, women, and kids — composed with the restraint of a luxury maison.</p>
+              <div class="hero-actions">
+                <a class="btn" href="#listing">Shop Collection</a>
+                <a class="btn-outline" href="#collections">Explore Categories</a>
+              </div>
+            </div>
+          </article>
+
+          <div class="hero-side">
+            <article class="hero-secondary fade-up">
+              <div class="hero-media">
+                <img src="https://images.unsplash.com/photo-1512436991641-6745cdb1723f?auto=format&fit=crop&w=1200&q=80" alt="Luxury menswear lookbook" />
+              </div>
+              <div class="hero-content">
+                <div class="eyebrow">Menswear</div>
+                <h2 class="display">Tailored for presence.</h2>
+                <a class="link-arrow" href="#listing"><span>Discover Men</span><span>→</span></a>
+              </div>
+            </article>
+
+            <article class="hero-secondary fade-up">
+              <div class="hero-media">
+                <img src="https://images.unsplash.com/photo-1519345182560-3f2917c472ef?auto=format&fit=crop&w=1200&q=80" alt="Kids premium fashion collection" />
+              </div>
+              <div class="hero-content">
+                <div class="eyebrow">Kids</div>
+                <h2 class="display">Minimal, playful, polished.</h2>
+                <a class="link-arrow" href="#listing"><span>Discover Kids</span><span>→</span></a>
+              </div>
+            </article>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section id="collections">
+      <div class="container">
+        <div class="section-head fade-up">
+          <div>
+            <div class="eyebrow">Featured Collections</div>
+            <h2 class="section-title">A wardrobe built around sharp restraint.</h2>
+          </div>
+          <p class="section-copy">Luxury e-commerce works best when the interface disappears. The focus here is image-led merchandising, deliberate typography, and compositional balance that gives every collection room to breathe.</p>
+        </div>
+
+        <div class="category-grid">
+          <a class="category-card fade-up" href="#listing" data-filter="women">
+            <img src="https://images.unsplash.com/photo-1483985988355-763728e1935b?auto=format&fit=crop&w=1200&q=80" alt="Women’s collection" />
+            <div class="category-content">
+              <div class="eyebrow">Women</div>
+              <h3 class="category-title">Modern Icons</h3>
+              <span class="btn-outline">Shop Women</span>
+            </div>
+          </a>
+
+          <a class="category-card fade-up" href="#listing" data-filter="men">
+            <img src="https://images.unsplash.com/photo-1507679799987-c73779587ccf?auto=format&fit=crop&w=1200&q=80" alt="Men’s collection" />
+            <div class="category-content">
+              <div class="eyebrow">Men</div>
+              <h3 class="category-title">Quiet Tailoring</h3>
+              <span class="btn-outline">Shop Men</span>
+            </div>
+          </a>
+
+          <a class="category-card fade-up" href="#listing" data-filter="kids">
+            <img src="https://images.unsplash.com/photo-1519238263530-99bdd11df2ea?auto=format&fit=crop&w=1200&q=80" alt="Kids collection" />
+            <div class="category-content">
+              <div class="eyebrow">Kids</div>
+              <h3 class="category-title">Soft Structure</h3>
+              <span class="btn-outline">Shop Kids</span>
+            </div>
+          </a>
+        </div>
+      </div>
+    </section>
+
+    <section id="listing">
+      <div class="container">
+        <div class="section-head fade-up">
+          <div>
+            <div class="eyebrow">Product Listing</div>
+            <h2 class="section-title">Curated essentials with editorial clarity.</h2>
+          </div>
+          <a class="link-arrow" href="#product"><span>Open product detail</span><span>→</span></a>
+        </div>
+
+        <div class="product-shell">
+          <aside class="filters fade-up" aria-label="Product filters">
+            <div class="filter-group">
+              <div class="filter-title">Category</div>
+              <div class="chip-list" id="categoryFilters">
+                <button class="chip active" data-category="all">All</button>
+                <button class="chip" data-category="women">Women</button>
+                <button class="chip" data-category="men">Men</button>
+                <button class="chip" data-category="kids">Kids</button>
+              </div>
+            </div>
+
+            <div class="filter-group">
+              <div class="filter-title">Collection</div>
+              <div class="chip-list" id="collectionFilters">
+                <button class="chip active" data-collection="all">All</button>
+                <button class="chip" data-collection="outerwear">Outerwear</button>
+                <button class="chip" data-collection="essentials">Essentials</button>
+                <button class="chip" data-collection="evening">Evening</button>
+              </div>
+            </div>
+
+            <div class="filter-group">
+              <div class="filter-title">Sizes</div>
+              <div class="size-list">
+                <button class="size-pill">XS</button>
+                <button class="size-pill">S</button>
+                <button class="size-pill">M</button>
+                <button class="size-pill">L</button>
+                <button class="size-pill">XL</button>
+              </div>
+            </div>
+          </aside>
+
+          <div class="product-grid" id="productGrid">
+            <article class="product-card fade-up" data-category="women" data-collection="essentials">
+              <div class="product-media">
+                <span class="product-tag">New</span>
+                <img src="https://images.unsplash.com/photo-1496747611176-843222e1e57c?auto=format&fit=crop&w=1200&q=80" alt="Sculpted wool coat" />
+              </div>
+              <div class="product-info">
+                <div class="product-topline">
+                  <h3 class="product-name">Sculpted Wool Coat</h3>
+                  <div class="product-price">$420</div>
+                </div>
+                <div class="product-meta">Women • Camel • Italian-blend wool</div>
+              </div>
+            </article>
+
+            <article class="product-card fade-up" data-category="men" data-collection="outerwear">
+              <div class="product-media">
+                <span class="product-tag">Signature</span>
+                <img src="https://images.unsplash.com/photo-1515886657613-9f3515b0c78f?auto=format&fit=crop&w=1200&q=80" alt="Tailored overcoat" />
+              </div>
+              <div class="product-info">
+                <div class="product-topline">
+                  <h3 class="product-name">Tailored Overcoat</h3>
+                  <div class="product-price">$460</div>
+                </div>
+                <div class="product-meta">Men • Ink black • Structured finish</div>
+              </div>
+            </article>
+
+            <article class="product-card fade-up" data-category="kids" data-collection="essentials">
+              <div class="product-media">
+                <span class="product-tag">Edited</span>
+                <img src="https://images.unsplash.com/photo-1519238263530-99bdd11df2ea?auto=format&fit=crop&w=1200&q=80" alt="Premium kids set" />
+              </div>
+              <div class="product-info">
+                <div class="product-topline">
+                  <h3 class="product-name">Soft Cotton Set</h3>
+                  <div class="product-price">$120</div>
+                </div>
+                <div class="product-meta">Kids • Oat • Everyday luxury</div>
+              </div>
+            </article>
+
+            <article class="product-card fade-up" data-category="women" data-collection="evening">
+              <div class="product-media">
+                <span class="product-tag">Limited</span>
+                <img src="https://images.unsplash.com/photo-1529139574466-a303027c1d8b?auto=format&fit=crop&w=1200&q=80" alt="Evening dress" />
+              </div>
+              <div class="product-info">
+                <div class="product-topline">
+                  <h3 class="product-name">Column Silk Dress</h3>
+                  <div class="product-price">$520</div>
+                </div>
+                <div class="product-meta">Women • Noir • Fluid movement</div>
+              </div>
+            </article>
+
+            <article class="product-card fade-up" data-category="men" data-collection="essentials">
+              <div class="product-media">
+                <span class="product-tag">Essential</span>
+                <img src="https://images.unsplash.com/photo-1507679799987-c73779587ccf?auto=format&fit=crop&w=1200&q=80" alt="Mens elevated knitwear" />
+              </div>
+              <div class="product-info">
+                <div class="product-topline">
+                  <h3 class="product-name">Merino Zip Knit</h3>
+                  <div class="product-price">$240</div>
+                </div>
+                <div class="product-meta">Men • Stone • Fine-gauge merino</div>
+              </div>
+            </article>
+
+            <article class="product-card fade-up" data-category="kids" data-collection="outerwear">
+              <div class="product-media">
+                <span class="product-tag">New</span>
+                <img src="https://images.unsplash.com/photo-1519345182560-3f2917c472ef?auto=format&fit=crop&w=1200&q=80" alt="Kids statement jacket" />
+              </div>
+              <div class="product-info">
+                <div class="product-topline">
+                  <h3 class="product-name">Mini Statement Jacket</h3>
+                  <div class="product-price">$150</div>
+                </div>
+                <div class="product-meta">Kids • Pearl • Soft shell finish</div>
+              </div>
+            </article>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section>
+      <div class="container">
+        <div class="campaign">
+          <article class="campaign-card fade-up">
+            <img src="https://images.unsplash.com/photo-1529139574466-a303027c1d8b?auto=format&fit=crop&w=1600&q=80" alt="Luxury fashion campaign" />
+            <div class="campaign-copy">
+              <div class="eyebrow">Campaign Edit</div>
+              <h2 class="display">Designed to move like modern couture.</h2>
+              <p class="hero-subtitle">A premium e-commerce homepage should pause the user without overwhelming them — bold visual storytelling, measured language, and a cadence that feels deliberate.</p>
+            </div>
+          </article>
+
+          <aside class="campaign-panel fade-up">
+            <div>
+              <div class="eyebrow">Brand Direction</div>
+              <h2 class="section-title">Luxury, not loud.</h2>
+              <p class="section-copy">The system favors contrast, texture, whitespace, and scale rather than decorative noise. This is how premium brands create confidence online.</p>
+            </div>
+            <div class="campaign-stats">
+              <div class="stat">
+                <strong>01</strong>
+                <span>Controlled typography with elegant serif contrast.</span>
+              </div>
+              <div class="stat">
+                <strong>02</strong>
+                <span>Grid-led merchandising for stronger product focus.</span>
+              </div>
+              <div class="stat">
+                <strong>03</strong>
+                <span>Subtle micro-animations that never feel theatrical.</span>
+              </div>
+              <div class="stat">
+                <strong>04</strong>
+                <span>Responsive layouts that preserve the same mood on mobile.</span>
+              </div>
+            </div>
+          </aside>
+        </div>
+      </div>
+    </section>
+
+    <section>
+      <div class="container">
+        <div class="section-head fade-up">
+          <div>
+            <div class="eyebrow">Editorial Features</div>
+            <h2 class="section-title">Collections presented like a fashion house.</h2>
+          </div>
+          <p class="section-copy">Each block is structured to feel intentional — campaign-led imagery, restrained copy, and conversion paths that do not cheapen the brand.</p>
+        </div>
+
+        <div class="editorial">
+          <article class="editorial-card fade-up">
+            <img src="https://images.unsplash.com/photo-1515886657613-9f3515b0c78f?auto=format&fit=crop&w=1200&q=80" alt="Refined outerwear feature" />
+            <div class="editorial-copy">
+              <div class="eyebrow">Outerwear</div>
+              <h3>Layering, sharpened to a minimalist language.</h3>
+              <p>Architectural coats, softened tailoring, and material depth designed to photograph beautifully across desktop and mobile.</p>
+              <a href="#listing" class="link-arrow"><span>Browse outerwear</span><span>→</span></a>
+            </div>
+          </article>
+
+          <article class="editorial-card fade-up">
+            <img src="https://images.unsplash.com/photo-1512436991641-6745cdb1723f?auto=format&fit=crop&w=1200&q=80" alt="Luxury essentials feature" />
+            <div class="editorial-copy">
+              <div class="eyebrow">Essentials</div>
+              <h3>Daily dressing elevated through proportion and finish.</h3>
+              <p>Core silhouettes, luxury neutrals, and a cleaner path to cart — designed with the polish expected from high-end fashion retail.</p>
+              <a href="#listing" class="link-arrow"><span>View essentials</span><span>→</span></a>
+            </div>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <section id="product">
+      <div class="container">
+        <div class="section-head fade-up">
+          <div>
+            <div class="eyebrow">Product Detail Page</div>
+            <h2 class="section-title">An elevated PDP with tactile restraint.</h2>
+          </div>
+          <a href="#homepage" class="link-arrow"><span>Back to top</span><span>↑</span></a>
+        </div>
+
+        <div class="pdp">
+          <div class="pdp-gallery fade-up">
+            <div class="thumbs" id="thumbs">
+              <button class="thumb active" data-image="https://images.unsplash.com/photo-1496747611176-843222e1e57c?auto=format&fit=crop&w=1400&q=80">
+                <img src="https://images.unsplash.com/photo-1496747611176-843222e1e57c?auto=format&fit=crop&w=500&q=80" alt="Product view 1" />
+              </button>
+              <button class="thumb" data-image="https://images.unsplash.com/photo-1529139574466-a303027c1d8b?auto=format&fit=crop&w=1400&q=80">
+                <img src="https://images.unsplash.com/photo-1529139574466-a303027c1d8b?auto=format&fit=crop&w=500&q=80" alt="Product view 2" />
+              </button>
+              <button class="thumb" data-image="https://images.unsplash.com/photo-1515886657613-9f3515b0c78f?auto=format&fit=crop&w=1400&q=80">
+                <img src="https://images.unsplash.com/photo-1515886657613-9f3515b0c78f?auto=format&fit=crop&w=500&q=80" alt="Product view 3" />
+              </button>
+              <button class="thumb" data-image="https://images.unsplash.com/photo-1512436991641-6745cdb1723f?auto=format&fit=crop&w=1400&q=80">
+                <img src="https://images.unsplash.com/photo-1512436991641-6745cdb1723f?auto=format&fit=crop&w=500&q=80" alt="Product view 4" />
+              </button>
+            </div>
+            <div class="pdp-main">
+              <img id="mainProductImage" src="https://images.unsplash.com/photo-1496747611176-843222e1e57c?auto=format&fit=crop&w=1400&q=80" alt="Main product image" />
+            </div>
+          </div>
+
+          <div class="pdp-info fade-up">
+            <div class="pdp-category">Women • Signature Outerwear</div>
+            <h2 class="pdp-title">Sculpted Wool Coat</h2>
+            <div class="pdp-price">$420</div>
+            <p class="pdp-description">A sharply composed coat cut from a dense wool blend with a clean drape, precise shoulders, and a belt detail that adds structure without excess. Designed to sit between timeless and directional.</p>
+
+            <div class="variant-group">
+              <div class="variant-label">Color</div>
+              <div class="swatches" id="swatches">
+                <button class="swatch active" style="background:#c2a98a" aria-label="Camel"></button>
+                <button class="swatch" style="background:#1b1b1b" aria-label="Black"></button>
+                <button class="swatch" style="background:#d9d5ce" aria-label="Stone"></button>
+              </div>
+            </div>
+
+            <div class="variant-group">
+              <div class="variant-label">Select Size</div>
+              <div class="size-list" id="pdpSizes">
+                <button class="size-pill">XS</button>
+                <button class="size-pill active">S</button>
+                <button class="size-pill">M</button>
+                <button class="size-pill">L</button>
+                <button class="size-pill">XL</button>
+              </div>
+            </div>
+
+            <div class="purchase-row">
+              <button class="btn">Add to Cart</button>
+              <button class="icon-btn" aria-label="Add to wishlist">
+                <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round">
+                  <path d="m12 21-1.45-1.32C5.4 15.05 2 11.97 2 8.2 2 5.12 4.42 3 7.5 3c1.74 0 3.41.81 4.5 2.09A6 6 0 0 1 16.5 3C19.58 3 22 5.12 22 8.2c0 3.77-3.4 6.85-8.55 11.49z"></path>
+                </svg>
+              </button>
+            </div>
+
+            <div class="note-row">
+              <div>Free premium shipping in 2–4 business days.</div>
+              <div>Complimentary returns within 14 days.</div>
+            </div>
+
+            <div class="detail-accordions">
+              <div class="accordion open">
+                <button type="button">Details <span>−</span></button>
+                <div class="accordion-content">Double-faced wool blend, concealed closure, detachable belt, interior welt pocket, and a fully lined construction. Designed for a smooth layered fit.</div>
+              </div>
+              <div class="accordion">
+                <button type="button">Size & Fit <span>+</span></button>
+                <div class="accordion-content">Relaxed tailored silhouette. Take your normal size for a clean oversized drape, or size down for a closer fit.</div>
+              </div>
+              <div class="accordion">
+                <button type="button">Shipping & Returns <span>+</span></button>
+                <div class="accordion-content">Orders are processed within 24 hours. Express shipping and boutique pickup can be enabled in production. Returns are complimentary for full-price items.</div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer class="site-footer">
+    <div class="container">
+      <div class="footer-grid">
+        <div class="footer-brand">
+          <div class="brand-mark">Aurelle</div>
+          <p>High-end fashion commerce designed with clarity, confidence, and the visual restraint expected of a premium brand.</p>
+        </div>
+
+        <div>
+          <div class="footer-title">Shop</div>
+          <div class="footer-links">
+            <a href="#listing">Women</a>
+            <a href="#listing">Men</a>
+            <a href="#listing">Kids</a>
+            <a href="#collections">New Arrivals</a>
+          </div>
+        </div>
+
+        <div>
+          <div class="footer-title">Client Care</div>
+          <div class="footer-links">
+            <a href="#">Shipping & Returns</a>
+            <a href="#">FAQs</a>
+            <a href="#">Store Locator</a>
+            <a href="#">Contact</a>
+          </div>
+        </div>
+
+        <div>
+          <div class="footer-title">About</div>
+          <div class="footer-links">
+            <a href="#">Maison</a>
+            <a href="#">Journal</a>
+            <a href="#">Careers</a>
+            <a href="#">Instagram</a>
+          </div>
+        </div>
+      </div>
+
+      <div class="footer-bottom">
+        <span>© 2026 Aurelle. All rights reserved.</span>
+        <span>Designed for a luxury fashion e-commerce experience.</span>
+      </div>
+    </div>
+  </footer>
+
+</body>
+
+  <script>
+  document.addEventListener('DOMContentLoaded', () => {
+    const $ = (selector, scope = document) => scope.querySelector(selector);
+    const $$ = (selector, scope = document) => Array.from(scope.querySelectorAll(selector));
+
+    /* =========================
+       Mobile Navigation
+    ========================= */
+    const mobileToggle = $('#mobileToggle');
+    const mobileMenu = $('#mobileMenu');
+
+    if (mobileToggle && mobileMenu) {
+      mobileToggle.addEventListener('click', () => {
+        const isOpen = mobileMenu.classList.toggle('open');
+        mobileToggle.setAttribute('aria-expanded', String(isOpen));
+      });
+
+      $$('a', mobileMenu).forEach(link => {
+        link.addEventListener('click', () => {
+          mobileMenu.classList.remove('open');
+          mobileToggle.setAttribute('aria-expanded', 'false');
+        });
+      });
+    }
+
+    /* =========================
+       Scroll Reveal Animation
+    ========================= */
+    const revealItems = $$('.fade-up');
+
+    if ('IntersectionObserver' in window) {
+      const revealObserver = new IntersectionObserver((entries, observer) => {
+        entries.forEach(entry => {
+          if (!entry.isIntersecting) return;
+          entry.target.classList.add('in-view');
+          observer.unobserve(entry.target);
+        });
+      }, {
+        threshold: 0.12,
+        rootMargin: '0px 0px -40px 0px'
+      });
+
+      revealItems.forEach(item => revealObserver.observe(item));
+    } else {
+      revealItems.forEach(item => item.classList.add('in-view'));
+    }
+
+    /* =========================
+       Product Listing Filters
+    ========================= */
+    const productGrid = $('#productGrid');
+    const productCards = $$('.product-card', productGrid);
+    const categoryButtons = $$('#categoryFilters .chip');
+    const collectionButtons = $$('#collectionFilters .chip');
+
+    let activeCategory = 'all';
+    let activeCollection = 'all';
+
+    function updateActiveState(buttons, selectedButton) {
+      buttons.forEach(btn => btn.classList.remove('active'));
+      if (selectedButton) selectedButton.classList.add('active');
+    }
+
+    function filterProducts() {
+      productCards.forEach(card => {
+        const matchesCategory =
+          activeCategory === 'all' || card.dataset.category === activeCategory;
+        const matchesCollection =
+          activeCollection === 'all' || card.dataset.collection === activeCollection;
+
+        const shouldShow = matchesCategory && matchesCollection;
+        card.style.display = shouldShow ? '' : 'none';
+      });
+    }
+
+    categoryButtons.forEach(button => {
+      button.addEventListener('click', () => {
+        activeCategory = button.dataset.category;
+        updateActiveState(categoryButtons, button);
+        filterProducts();
+      });
+    });
+
+    collectionButtons.forEach(button => {
+      button.addEventListener('click', () => {
+        activeCollection = button.dataset.collection;
+        updateActiveState(collectionButtons, button);
+        filterProducts();
+      });
+    });
+
+    /* =========================
+       Generic Toggle Pills
+    ========================= */
+    function makeSingleSelect(groupSelector, itemSelector, activeClass = 'active') {
+      const groups = $$(groupSelector);
+      groups.forEach(group => {
+        const items = $$(itemSelector, group);
+        items.forEach(item => {
+          item.addEventListener('click', () => {
+            items.forEach(el => el.classList.remove(activeClass));
+            item.classList.add(activeClass);
+          });
+        });
+      });
+    }
+
+    function makeMultiSelect(selector, activeClass = 'active') {
+      $$(selector).forEach(item => {
+        item.addEventListener('click', () => {
+          item.classList.toggle(activeClass);
+        });
+      });
+    }
+
+    makeMultiSelect('.filters .size-pill');
+    makeSingleSelect('#pdpSizes', '.size-pill');
+    makeSingleSelect('#swatches', '.swatch');
+
+    /* =========================
+       Category Cards -> Apply Filter
+    ========================= */
+    const categoryCards = $$('.category-card');
+    categoryCards.forEach(card => {
+      card.addEventListener('click', () => {
+        const filter = card.dataset.filter;
+        const targetButton = $(`#categoryFilters .chip[data-category="${filter}"]`);
+        if (targetButton) {
+          activeCategory = filter;
+          updateActiveState(categoryButtons, targetButton);
+          filterProducts();
+        }
+      });
+    });
+
+    /* =========================
+       PDP Gallery Thumbnails
+    ========================= */
+    const mainProductImage = $('#mainProductImage');
+    const thumbs = $$('.thumb', $('#thumbs'));
+
+    thumbs.forEach(thumb => {
+      thumb.addEventListener('click', () => {
+        thumbs.forEach(t => t.classList.remove('active'));
+        thumb.classList.add('active');
+
+        const newImage = thumb.dataset.image;
+        const thumbImg = $('img', thumb);
+
+        if (mainProductImage && newImage) {
+          mainProductImage.src = newImage;
+          mainProductImage.alt = thumbImg ? thumbImg.alt : 'Selected product image';
+        }
+      });
+    });
+
+    /* =========================
+       Product Cards -> Populate PDP
+    ========================= */
+    const pdpSection = $('#product');
+    const pdpCategory = $('.pdp-category');
+    const pdpTitle = $('.pdp-title');
+    const pdpPrice = $('.pdp-price');
+    const pdpDescription = $('.pdp-description');
+
+    const productDescriptions = {
+      'Sculpted Wool Coat':
+        'A sharply composed coat cut from a dense wool blend with a clean drape, precise shoulders, and a belt detail that adds structure without excess. Designed to sit between timeless and directional.',
+      'Tailored Overcoat':
+        'An architectural overcoat designed for a refined silhouette, finished with clean lines, soft structure, and understated luxury for everyday wear.',
+      'Soft Cotton Set':
+        'A premium kidswear set crafted for comfort and polish, balancing soft fabrication with elevated finishing for an effortless daily uniform.',
+      'Column Silk Dress':
+        'A fluid evening silhouette with a long, elegant line and quiet drama — designed to move beautifully and photograph with depth.',
+      'Merino Zip Knit':
+        'A fine-gauge merino knit with a clean zip collar and elevated hand feel, built for transitional dressing with minimal effort.',
+      'Mini Statement Jacket':
+        'A polished outer layer for kids, designed with a clean shape, soft finish, and elevated proportions that feel playful yet refined.'
+    };
+
+    productCards.forEach(card => {
+      card.addEventListener('click', () => {
+        const name = $('.product-name', card)?.textContent?.trim() || 'Product';
+        const price = $('.product-price', card)?.textContent?.trim() || '';
+        const meta = $('.product-meta', card)?.textContent?.trim() || '';
+        const image = $('.product-media img', card)?.getAttribute('src') || '';
+
+        if (pdpTitle) pdpTitle.textContent = name;
+        if (pdpPrice) pdpPrice.textContent = price;
+        if (pdpCategory) pdpCategory.textContent = meta;
+        if (pdpDescription) {
+          pdpDescription.textContent =
+            productDescriptions[name] ||
+            'A refined fashion piece presented with premium materials, modern proportions, and an elevated finish.';
+        }
+
+        if (mainProductImage && image) {
+          mainProductImage.src = image;
+          mainProductImage.alt = name;
+        }
+
+        if (thumbs.length && image) {
+          thumbs.forEach((thumb, index) => {
+            thumb.classList.remove('active');
+            if (index === 0) {
+              thumb.classList.add('active');
+              thumb.dataset.image = image;
+              const thumbImg = $('img', thumb);
+              if (thumbImg) {
+                thumbImg.src = image;
+                thumbImg.alt = name;
+              }
+            }
+          });
+        }
+
+        if (pdpSection) {
+          pdpSection.scrollIntoView({ behavior: 'smooth', block: 'start' });
+        }
+      });
+    });
+
+    /* =========================
+       PDP Accordions
+    ========================= */
+    const accordions = $$('.accordion');
+
+    accordions.forEach(accordion => {
+      const button = $('button', accordion);
+      const symbol = $('span', button);
+
+      button.addEventListener('click', () => {
+        const isOpen = accordion.classList.contains('open');
+
+        accordions.forEach(item => {
+          item.classList.remove('open');
+          const itemButton = $('button', item);
+          const itemSymbol = $('span', itemButton);
+          if (itemSymbol) itemSymbol.textContent = '+';
+        });
+
+        if (!isOpen) {
+          accordion.classList.add('open');
+          if (symbol) symbol.textContent = '−';
+        }
+      });
+    });
+
+    /* =========================
+       Smooth anchor offset polish
+    ========================= */
+    $$('a[href^="#"]').forEach(link => {
+      link.addEventListener('click', event => {
+        const href = link.getAttribute('href');
+        if (!href || href === '#') return;
+
+        const target = document.querySelector(href);
+        if (!target) return;
+
+        event.preventDefault();
+
+        const headerOffset = document.querySelector('.site-header')?.offsetHeight || 0;
+        const top = target.getBoundingClientRect().top + window.pageYOffset - headerOffset + 2;
+
+        window.scrollTo({
+          top,
+          behavior: 'smooth'
+        });
+      });
+    });
+  });
+</script>
+</html>

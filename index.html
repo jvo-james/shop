@@ -1,0 +1,491 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title> Fashion House</title>
+  <meta name="description" content="Maison Élitaire luxury fashion for women, men, and children." />
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@400;500;600;700&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css">
+  <link rel="stylesheet" href="styles.css" />
+</head>
+<body data-page="home">
+  <div class="site-shell">
+    <header class="topbar">
+      Complimentary shipping on selected orders
+    </header>
+
+    <nav class="navbar">
+      <div class="container nav-inner">
+        <button class="nav-toggle" aria-label="Open menu" aria-expanded="false" aria-controls="mobileMenu">
+          <span></span>
+          <span></span>
+        </button>
+
+        <div class="nav-links nav-left">
+          <a href="products.html?category=Women">Women</a>
+          <a href="products.html?category=Men">Men</a>
+          <a href="products.html?category=Children">Children</a>
+        </div>
+
+        <a href="index.html" class="brand">MAISON ÉLITAIRE</a>
+
+        <div class="nav-links nav-right">
+          <a href="products.html?edit=New Arrivals">New</a>
+          <a href="products.html">Collections</a>
+          <a href="vendor.html">Vendors</a>
+          <button class="nav-text-btn search-open-btn" aria-label="Open search">Search</button>
+          <button class="nav-icon-btn cart-open-btn" aria-label="Open bag">
+            <i class="fa-solid fa-bag-shopping"></i>
+            <span class="cart-count" data-cart-count>0</span>
+          </button>
+        </div>
+      </div>
+
+<div class="mobile-menu" id="mobileMenu">
+  <div class="mobile-menu-head">
+    <span>Explore</span>
+  </div>
+
+  <div class="mobile-menu-grid">
+    <a href="products.html?category=Women">Women</a>
+    <a href="products.html?category=Men">Men</a>
+    <a href="products.html?category=Children">Children</a>
+    <a href="products.html?edit=New Arrivals">New</a>
+    <a href="products.html">Collections</a>
+          <a href="vendor.html">Vendors</a>
+    <button class="mobile-search-btn search-open-btn" type="button">Search</button>
+  </div>
+</div>
+    </nav>
+
+    <main>
+      <section class="hero">
+        <div class="hero-media">
+          <img
+            src="https://images.unsplash.com/photo-1515886657613-9f3515b0c78f?auto=format&fit=crop&w=1800&q=80"
+            alt="Luxury fashion campaign"
+          />
+        </div>
+        <div class="hero-overlay"></div>
+
+        <div class="hero-content container">
+          <p class="eyebrow">Spring Summer 2026</p>
+          <h1>Quiet power in every silhouette.</h1>
+          <p class="hero-copy">
+            Tailored essentials, fluid dressing, and refined children's wear shaped with restraint, precision, and presence.
+          </p>
+          <div class="hero-actions">
+            <a href="products.html?category=Women" class="btn btn-light">Shop Women</a>
+            <a href="products.html?category=Men" class="btn btn-outline-light">Explore Men</a>
+          </div>
+        </div>
+      </section>
+
+      <section class="section intro-statement">
+        <div class="container intro-grid">
+          <div>
+            <p class="eyebrow">Maison</p>
+            <h2>Luxury with a studied calm.</h2>
+          </div>
+          <div>
+            <p class="intro-copy">
+              Maison Élitaire is imagined as a fashion house first and a store second. The experience is guided by scale, materiality, and image-led composition rather than commercial clutter.
+            </p>
+          </div>
+        </div>
+      </section>
+
+      <section class="section categories">
+        <div class="container">
+          <div class="section-head">
+            <div>
+              <p class="eyebrow">Collections</p>
+              <h2>Shop by world</h2>
+            </div>
+            <a href="products.html" class="section-link">View all</a>
+          </div>
+
+          <div class="category-grid">
+            <a class="category-card category-large" href="products.html?category=Women">
+              <img
+                src="https://images.unsplash.com/photo-1496747611176-843222e1e57c?auto=format&fit=crop&w=1400&q=80"
+                alt="Women's collection"
+              />
+              <div class="category-overlay">
+                <span>Women</span>
+              </div>
+            </a>
+
+            <a class="category-card" href="products.html?category=Men">
+              <img
+                src="https://images.unsplash.com/photo-1507679799987-c73779587ccf?auto=format&fit=crop&w=1200&q=80"
+                alt="Men's collection"
+              />
+              <div class="category-overlay">
+                <span>Men</span>
+              </div>
+            </a>
+
+            <a class="category-card" href="products.html?category=Children">
+              <img
+                src="https://images.unsplash.com/photo-1519345182560-3f2917c472ef?auto=format&fit=crop&w=1200&q=80"
+                alt="Children's collection"
+              />
+              <div class="category-overlay">
+                <span>Children</span>
+              </div>
+            </a>
+          </div>
+        </div>
+      </section>
+
+      <section class="section split-feature">
+        <div class="container split-grid">
+          <div class="split-media">
+            <img
+              src="https://images.unsplash.com/photo-1529139574466-a303027c1d8b?auto=format&fit=crop&w=1500&q=80"
+              alt="Editorial fashion image"
+            />
+          </div>
+
+          <div class="split-copy">
+            <p class="eyebrow">Editorial Focus</p>
+            <h2>Modern tailoring, softened by ease.</h2>
+            <p>
+              Structured jackets, fluid dresses, rich knitwear, and elevated daily pieces are presented with a quiet confidence that privileges line, proportion, and texture.
+            </p>
+            <a href="products.html?edit=Tailoring" class="text-link">Discover the collection</a>
+          </div>
+        </div>
+      </section>
+
+      <section class="section editorial-mosaic">
+        <div class="container">
+          <div class="section-head">
+            <div>
+              <p class="eyebrow">Editorial</p>
+              <h2>A studied composition</h2>
+            </div>
+            <p class="section-note">
+              A curated image arrangement built to feel balanced, spacious, and intentional.
+            </p>
+          </div>
+
+          <div class="mosaic-grid">
+            <article class="mosaic-card mosaic-a editorial-shop-trigger" data-product-id="women-tailored-wool-blazer" tabindex="0" role="button" aria-label="View product from editorial image">
+              <img
+                src="https://images.unsplash.com/photo-1524504388940-b1c1722653e1?auto=format&fit=crop&w=1400&q=80"
+                alt="Editorial portrait"
+              />
+              <button class="editorial-hover-pill" type="button">View Piece</button>
+            </article>
+
+            <article class="mosaic-card mosaic-b editorial-shop-trigger" data-product-id="men-structured-jacket" tabindex="0" role="button" aria-label="View product from editorial image">
+              <img
+                src="https://images.unsplash.com/photo-1483985988355-763728e1935b?auto=format&fit=crop&w=1200&q=80"
+                alt="Street luxury editorial"
+              />
+              <button class="editorial-hover-pill" type="button">View Piece</button>
+            </article>
+
+            <article class="mosaic-card mosaic-c editorial-shop-trigger" data-product-id="women-fluid-satin-dress" tabindex="0" role="button" aria-label="View product from editorial image">
+              <img
+                src="https://images.unsplash.com/photo-1512436991641-6745cdb1723f?auto=format&fit=crop&w=1200&q=80"
+                alt="Cream coat editorial"
+              />
+              <button class="editorial-hover-pill" type="button">View Piece</button>
+            </article>
+
+            <article class="mosaic-card mosaic-d editorial-shop-trigger" data-product-id="children-premium-knit-set" tabindex="0" role="button" aria-label="View product from editorial image">
+              <img
+                src="https://images.unsplash.com/photo-1541099649105-f69ad21f3246?auto=format&fit=crop&w=1200&q=80"
+                alt="Minimal styling editorial"
+              />
+              <button class="editorial-hover-pill" type="button">View Piece</button>
+            </article>
+
+            <article class="mosaic-card mosaic-e editorial-shop-trigger" data-product-id="men-fine-gauge-knit-polo" tabindex="0" role="button" aria-label="View product from editorial image">
+              <img
+                src="https://images.unsplash.com/photo-1490578474895-699cd4e2cf59?auto=format&fit=crop&w=1200&q=80"
+                alt="Menswear knitwear editorial"
+              />
+              <button class="editorial-hover-pill" type="button">View Piece</button>
+            </article>
+          </div>
+        </div>
+      </section>
+
+      <section class="section featured-products">
+        <div class="container">
+          <div class="section-head">
+            <div>
+              <p class="eyebrow">Selection</p>
+              <h2>House highlights</h2>
+            </div>
+            <a href="products.html?edit=Best Sellers" class="section-link">Shop all</a>
+          </div>
+
+          <div class="product-grid" id="homeFeaturedProducts"></div>
+        </div>
+      </section>
+
+      <section class="section home-edits">
+        <div class="container">
+          <div class="section-head">
+            <div>
+              <p class="eyebrow">Edits</p>
+              <h2>Browse the house codes</h2>
+            </div>
+          </div>
+
+        <div class="edits-grid edits-grid-compact">
+  <a href="products.html?edit=New Arrivals">New Arrivals</a>
+  <a href="products.html?edit=Best Sellers">Best Sellers</a>
+  <a href="products.html?edit=Sale">Sale</a>
+  <a href="products.html?edit=Occasion Wear">Occasion Wear</a>
+  <a href="products.html?edit=Essentials">Essentials</a>
+  <a href="products.html?edit=Summer Edit">Summer Edit</a>
+  <a href="products.html?edit=Tailoring">Tailoring</a>
+  <a href="products.html?edit=Evening">Evening</a>
+  <a href="products.html?edit=Resort">Resort</a>
+  <a href="products.html?edit=Gift Edit">Gift Edit</a>
+          <a href="vendor.html">Vendor portal</a>
+</div>
+        </div>
+      </section>
+
+      <section class="section campaign-banner">
+        <div class="container campaign-inner">
+          <p class="eyebrow">New Arrivals</p>
+          <h2>Objects of dress, shaped with precision.</h2>
+          <a href="products.html?edit=New Arrivals" class="btn btn-dark">Explore the drop</a>
+        </div>
+      </section>
+
+      <section class="section journal">
+        <div class="container">
+          <div class="section-head">
+            <div>
+              <p class="eyebrow">Journal</p>
+              <h2>From the house</h2>
+            </div>
+            <a href="products.html" class="section-link">View collection</a>
+          </div>
+
+          <div class="journal-grid">
+           <article class="journal-card journal-card-a">
+              <img
+                src="https://images.unsplash.com/photo-1524504388940-b1c1722653e1?auto=format&fit=crop&w=1200&q=80"
+                alt="Editorial image one"
+              />
+              <div class="journal-content">
+                <h3>Quiet luxury in motion</h3>
+                <p>Minimal dressing elevated through fabric, line, and silhouette.</p>
+              </div>
+            </article>
+
+            <article class="journal-card journal-card-b">
+              <img
+                src="https://images.unsplash.com/photo-1483985988355-763728e1935b?auto=format&fit=crop&w=1200&q=80"
+                alt="Editorial image two"
+              />
+              <div class="journal-content">
+                <h3>Icons for everyday wear</h3>
+                <p>Wardrobe essentials refined for contemporary city dressing.</p>
+              </div>
+            </article>
+
+            <article class="journal-card journal-card-c">
+              <img
+                src="https://images.unsplash.com/photo-1512436991641-6745cdb1723f?auto=format&fit=crop&w=1200&q=80"
+                alt="Editorial image three"
+              />
+              <div class="journal-content">
+                <h3>The future of tailored ease</h3>
+                <p>Soft structures and elegant cuts for a modern editorial wardrobe.</p>
+              </div>
+            </article>
+          </div>
+        </div>
+      </section>
+
+      <section class="section newsletter">
+        <div class="container newsletter-grid">
+          <div>
+            <p class="eyebrow">Private Access</p>
+            <h2>Join the maison list</h2>
+          </div>
+          <form class="newsletter-form">
+            <input type="email" placeholder="Email address" aria-label="Email address" />
+            <button type="submit" class="btn btn-dark">Subscribe</button>
+          </form>
+        </div>
+      </section>
+    </main>
+
+    <footer class="footer">
+      <div class="container footer-grid">
+        <div>
+          <a href="index.html" class="brand footer-brand">MAISON ÉLITAIRE</a>
+          <p class="footer-copy">
+            Luxury fashion for women, men, and children, defined by restraint, scale, and clarity.
+          </p>
+        </div>
+
+        <div>
+          <h4>Women</h4>
+          <a href="products.html?category=Women&subcategory=Dresses">Dresses</a>
+          <a href="products.html?category=Women&subcategory=Tops">Tops</a>
+          <a href="products.html?category=Women&subcategory=Trousers">Trousers</a>
+          <a href="products.html?category=Women&subcategory=Skirts">Skirts</a>
+          <a href="products.html?category=Women&subcategory=Knitwear">Knitwear</a>
+          <a href="products.html?category=Women&subcategory=Outerwear">Outerwear</a>
+        </div>
+
+        <div>
+          <h4>Men</h4>
+          <a href="products.html?category=Men&subcategory=Shirts">Shirts</a>
+          <a href="products.html?category=Men&subcategory=T-Shirts">T-Shirts</a>
+          <a href="products.html?category=Men&subcategory=Trousers">Trousers</a>
+          <a href="products.html?category=Men&subcategory=Denim">Denim</a>
+          <a href="products.html?category=Men&subcategory=Jackets">Jackets</a>
+          <a href="products.html?category=Men&subcategory=Knitwear">Knitwear</a>
+        </div>
+
+        <div>
+          <h4>Children & Edits</h4>
+          <a href="products.html?category=Children&subcategory=Girls">Girls</a>
+          <a href="products.html?category=Children&subcategory=Boys">Boys</a>
+          <a href="products.html?category=Children&subcategory=Baby">Baby</a>
+          <a href="products.html?category=Children&subcategory=Sets">Sets</a>
+          <a href="products.html?edit=Best Sellers">Best Sellers</a>
+          <a href="products.html?edit=Gift Edit">Gift Edit</a>
+          <a href="vendor.html">Vendor portal</a>
+        </div>
+      </div>
+    </footer>
+  </div>
+
+  <div class="overlay search-overlay" data-search-overlay aria-hidden="true">
+    <div class="overlay-panel search-panel" role="dialog" aria-modal="true" aria-labelledby="searchTitle">
+      <button class="overlay-close search-close-btn" aria-label="Close search">
+        <i class="fa-solid fa-xmark"></i>
+      </button>
+
+      <div class="search-header">
+        <p class="eyebrow">Search</p>
+        <h2 id="searchTitle">Find the piece</h2>
+      </div>
+
+      <form class="search-form">
+        <input type="search" placeholder="Search for tailoring, dresses, knitwear..." aria-label="Search products" id="searchInput" />
+      </form>
+
+      <div class="search-suggestions">
+        <button type="button">Tailoring</button>
+        <button type="button">Evening</button>
+        <button type="button">Knitwear</button>
+        <button type="button">Children</button>
+      </div>
+
+      <div class="search-results-grid" id="searchResultsGrid"></div>
+    </div>
+  </div>
+
+  <aside class="cart-drawer" data-cart-drawer aria-hidden="true">
+    <div class="cart-overlay" data-cart-close></div>
+
+    <div class="cart-panel" role="dialog" aria-modal="true" aria-labelledby="cartTitle">
+      <div class="cart-header">
+        <div>
+          <p class="eyebrow">Bag</p>
+          <h2 id="cartTitle">Your selection</h2>
+        </div>
+        <button class="overlay-close cart-close-btn" aria-label="Close bag">
+          <i class="fa-solid fa-xmark"></i>
+        </button>
+      </div>
+
+      <div class="cart-body">
+        <div class="cart-items" data-cart-items></div>
+
+        <div class="cart-benefits">
+          <div>
+            <strong>Complimentary delivery</strong>
+            <span>On selected orders and destinations</span>
+          </div>
+          <div>
+            <strong>Returns</strong>
+            <span>Accepted within 14 days in original condition</span>
+          </div>
+        </div>
+      </div>
+
+      <div class="cart-footer">
+        <div class="cart-summary-row">
+          <span>Subtotal</span>
+          <strong data-cart-subtotal>$0</strong>
+        </div>
+        <div class="cart-summary-row small">
+          <span>Estimated shipping</span>
+          <span>Calculated at checkout</span>
+        </div>
+        <button class="btn btn-dark full-width">Proceed to checkout</button>
+        <button class="btn btn-outline-dark full-width cart-clear-btn">Clear bag</button>
+      </div>
+    </div>
+  </aside>
+
+  <div class="overlay quick-view-overlay" data-quick-view-overlay aria-hidden="true">
+    <div class="overlay-panel quick-view-panel" role="dialog" aria-modal="true" aria-labelledby="quickViewTitle">
+      <button class="overlay-close quick-view-close-btn" aria-label="Close quick view">
+        <i class="fa-solid fa-xmark"></i>
+      </button>
+
+      <div class="quick-view-grid">
+        <div class="quick-view-image-wrap">
+          <img src="" alt="" data-quick-view-image />
+        </div>
+
+        <div class="quick-view-copy">
+          <p class="eyebrow" data-quick-view-category></p>
+          <h2 id="quickViewTitle" data-quick-view-name></h2>
+          <strong class="quick-view-price" data-quick-view-price></strong>
+          <p class="quick-view-description" data-quick-view-description></p>
+
+          <div class="quick-view-options">
+            <div>
+              <p class="option-label">Size</p>
+              <div class="size-pills quick-size-pills" data-quick-view-sizes></div>
+            </div>
+
+            <div>
+              <p class="option-label">Quantity</p>
+              <div class="qty-control">
+                <button type="button" data-qty-minus>-</button>
+                <span data-quick-qty>1</span>
+                <button type="button" data-qty-plus>+</button>
+              </div>
+            </div>
+          </div>
+
+          <div class="quick-view-actions">
+            <button class="btn btn-dark full-width" data-quick-add>Add to bag</button>
+            <a href="product.html" class="btn btn-outline-dark full-width" data-quick-view-link>View product</a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <script src="women.js"></script>
+  <script src="men.js"></script>
+  <script src="children.js"></script>
+  <script src="edits.js"></script>
+  <script src="script.js"></script>
+</body>
+</html>
